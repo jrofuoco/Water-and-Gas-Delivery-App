@@ -19,7 +19,7 @@ import com.example.waterandgasdevliveryappmvp.model.LoginPresenter;
 public class Login extends AppCompatActivity implements LoginView{
 
     Button login;
-    TextView signup;
+    TextView signup, forgot_password;
 
     EditText email, password;
 
@@ -51,6 +51,13 @@ public class Login extends AppCompatActivity implements LoginView{
             Intent intent = new Intent(Login.this, Signup.class);
             startActivity(intent);
         });
+
+        forgot_password = findViewById(R.id.forgot_password);
+        forgot_password.setOnClickListener(view -> {
+            Intent intent = new Intent(Login.this, ForgotPassword.class);
+            startActivity(intent);
+        });
+
     }
 
 
