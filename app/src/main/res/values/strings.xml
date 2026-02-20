@@ -26,4 +26,7 @@
     <string name="water">Water</string>
     <string name="gas_only">Gas</string>
     <string name="rating">4.9</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="forgot_subtitle">No worries! Enter your email address and we’ll send you instructions to create a new password.</string>
+    <string name="forgot_btn">Send</string>
 </resources>
