@@ -1,7 +1,10 @@
 package com.example.waterandgasdevliveryappmvp.view;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,10 +13,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.waterandgasdevliveryappmvp.R;
+import com.example.waterandgasdevliveryappmvp.model.OTPPresenter;
 
-public class ForgotPassword extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OTPView {
 
     ImageView back;
+    Button send;
+    TextView email_address;
+
+    private OTPPresenter presenter;
+
+    private String verification_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +35,36 @@ public class ForgotPassword extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        send = findViewById(R.id.reset_password);
+        email_address = findViewById(R.id.email);
 
+        presenter = new OTPPresenter(this);
+
+        //SENDOTP
+        send.setOnClickListener(view -> {
+            String email = email_address.getText().toString().trim();
+            if(!email.isEmpty()) {
+                presenter.sendOtp(email);
+            }else {
+                Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //BACK
         back = findViewById(R.id.back_arrow);
         back.setOnClickListener(view -> {
             finish();
         });
+    }
+
+    @Override
+    public void showSuccess(String otp) {
+        verification_code = otp; // store OTP
+        runOnUiThread(() -> Toast.makeText(this, "OTP sent: " + otp, Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void showError(String message) {
+        runOnUiThread(() -> Toast.makeText(this, "Error: " + message, Toast.LENGTH_SHORT).show());
     }
 }
