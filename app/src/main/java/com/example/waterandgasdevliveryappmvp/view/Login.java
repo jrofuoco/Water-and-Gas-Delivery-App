@@ -3,7 +3,9 @@ package com.example.waterandgasdevliveryappmvp.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +14,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.waterandgasdevliveryappmvp.R;
+import com.example.waterandgasdevliveryappmvp.model.LoginPresenter;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements LoginView{
 
     Button login;
     TextView signup;
+
+    EditText email, password;
+
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +36,34 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        loginPresenter = new LoginPresenter(this, this);
         //LOGIN BUTTON
         login = findViewById(R.id.login_button);
         login.setOnClickListener(view -> {
-            Intent intent = new Intent(Login.this, Homepage.class);
-            startActivity(intent);
+            loginPresenter.login(email.getText().toString(), password.getText().toString());
         });
 
         //SIGN UP BUTTON
         signup = findViewById(R.id.signup_Btn);
         signup.setOnClickListener(view -> {
             Intent intent = new Intent(Login.this, Signup.class);
+            startActivity(intent);
+        });
+    }
+
+
+    @Override
+    public void showMessage(String message) {
+        runOnUiThread(() -> Toast.makeText(this, message, Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        runOnUiThread(() -> {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, Homepage.class);
             startActivity(intent);
         });
     }
