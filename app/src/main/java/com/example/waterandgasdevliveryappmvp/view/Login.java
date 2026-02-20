@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity implements LoginView{
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         loginPresenter = new LoginPresenter(this, this);
-        //LOGIN BUTTONa
+        //LOGIN BUTTON
         login = findViewById(R.id.login_button);
         login.setOnClickListener(view -> {
             loginPresenter.login(email.getText().toString(), password.getText().toString());
