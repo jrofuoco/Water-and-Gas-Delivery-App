@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/otp"
+        android:textColor="@color/dark_grey"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otp_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxStrokeColor="@color/primary_orange"
+        android:hint="@string/otp"
+        app:hintTextColor="@color/medium_grey"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgot_subtitle"
+        app:startIconDrawable="@android:drawable/ic_dialog_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otp_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="48dp"
+            android:paddingEnd="12dp"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="342dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/confirm_otp"
+        android:layout_marginStart="32dp"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_orange"
+        android:layout_marginTop="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/forgot_btn"
+        android:textColor="@color/white"
+        app:cornerRadius="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_input_layout" />
+
+</LinearLayout>

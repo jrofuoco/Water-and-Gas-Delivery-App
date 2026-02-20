@@ -1,7 +1,9 @@
 package com.example.waterandgasdevliveryappmvp.view;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,11 +58,31 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
             finish();
         });
     }
+    private void showCustomOtpDialog() {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_otp, null);
+        EditText otpInput = dialogView.findViewById(R.id.otp_input);
+
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setPositiveButton("Verify", (dialog, which) -> {
+                    String enteredOtp = otpInput.getText().toString().trim();
+                    if (enteredOtp.equals(verification_code)) {
+                        Toast.makeText(this, "OTP Verified!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Wrong OTP!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
 
     @Override
     public void showSuccess(String otp) {
         verification_code = otp; // store OTP
-        runOnUiThread(() -> Toast.makeText(this, "OTP sent: " + otp, Toast.LENGTH_SHORT).show());
+        runOnUiThread(() -> {
+            Toast.makeText(this, "OTP sent: " + otp, Toast.LENGTH_SHORT).show();
+            showCustomOtpDialog();
+        });
     }
 
     @Override
