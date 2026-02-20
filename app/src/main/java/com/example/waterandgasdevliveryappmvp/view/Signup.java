@@ -23,7 +23,7 @@ public class Signup extends AppCompatActivity implements SignupView{
     EditText firstname, lastname, email, phone_number, password, confirm_password;
     Button signup;
 
-    private SignupPresenter signupPresenter, asd;
+    private SignupPresenter signupPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
