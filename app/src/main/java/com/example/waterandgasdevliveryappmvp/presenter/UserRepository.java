@@ -1,6 +1,9 @@
-package com.example.waterandgasdevliveryappmvp.model.local;
+package com.example.waterandgasdevliveryappmvp.presenter;
 
 import android.content.Context;
+
+import com.example.waterandgasdevliveryappmvp.model.local.AppDatabase;
+import com.example.waterandgasdevliveryappmvp.model.local.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -1,9 +1,9 @@
-package com.example.waterandgasdevliveryappmvp.presenter;
+package com.example.waterandgasdevliveryappmvp.model;
 
 import android.content.Context;
 
 import com.example.waterandgasdevliveryappmvp.model.local.User;
-import com.example.waterandgasdevliveryappmvp.model.local.UserRepository;
+import com.example.waterandgasdevliveryappmvp.presenter.UserRepository;
 import com.example.waterandgasdevliveryappmvp.view.SignupView;
 
 public class SignupPresenter {

@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.waterandgasdevliveryappmvp.R;
-import com.example.waterandgasdevliveryappmvp.presenter.SignupPresenter;
+import com.example.waterandgasdevliveryappmvp.model.SignupPresenter;
 
 public class Signup extends AppCompatActivity implements SignupView{
 
