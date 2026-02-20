@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaterAndGasDevliveryAppMVP">
         <activity
+            android:name=".view.ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".view.Homepage"
             android:exported="false" />
         <activity
