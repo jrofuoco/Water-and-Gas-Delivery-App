@@ -18,13 +18,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        
-        val properties = Properties()
-        if (rootProject.file("local.properties").exists()) {
-            properties.load(rootProject.file("local.properties").inputStream())
-        }
-        
-        buildConfigField("String", "MY_SECRET_API_KEY", properties.getProperty("MY_SECRET_API_KEY", ""))
     }
 
     buildTypes {

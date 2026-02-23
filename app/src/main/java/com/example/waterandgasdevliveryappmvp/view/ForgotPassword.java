@@ -80,7 +80,7 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
     public void showSuccess(String otp) {
         verification_code = otp; // store OTP
         runOnUiThread(() -> {
-            Toast.makeText(this, "OTP sent: " + otp, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "OTP sent: " + "******", Toast.LENGTH_SHORT).show();
             showCustomOtpDialog();
         });
     }
@@ -88,5 +88,6 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
     @Override
     public void showError(String message) {
         runOnUiThread(() -> Toast.makeText(this, "Error: " + message, Toast.LENGTH_SHORT).show());
+        System.out.println("Error: " + message);
     }
 }
