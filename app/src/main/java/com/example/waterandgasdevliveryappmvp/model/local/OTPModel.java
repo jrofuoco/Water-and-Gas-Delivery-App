@@ -1,8 +1,5 @@
 package com.example.waterandgasdevliveryappmvp.model.local;
 
-
-import android.util.Log;
-
 import com.example.waterandgasdevliveryappmvp.BuildConfig;
 
 import java.util.Properties;
