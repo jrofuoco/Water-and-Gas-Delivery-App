@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
 public class OTPModel {
 
     // Put your Gmail credentials here (Model only)
-    private final String fromEmail = "trickmic2@gmail.com";
+    private final String fromEmail = "trickmic2@gmail.coma";
     private final String appPassword = BuildConfig.MY_SECRET_API_KEY;
 
     public interface OTPListener {
