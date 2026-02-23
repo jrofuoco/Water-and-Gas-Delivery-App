@@ -1,5 +1,6 @@
 package com.example.waterandgasdevliveryappmvp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -124,6 +125,8 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
                 if (enteredOtp.equals(verification_code)) {
                     Toast.makeText(ForgotPassword.this, "OTP Verified!", Toast.LENGTH_SHORT).show();
                     otpDialog.dismiss();
+                    Intent intent = new Intent(ForgotPassword.this, ChangePassword.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(ForgotPassword.this, "Wrong OTP! Please try again.", Toast.LENGTH_SHORT).show();
                     otpInput.setText("");
