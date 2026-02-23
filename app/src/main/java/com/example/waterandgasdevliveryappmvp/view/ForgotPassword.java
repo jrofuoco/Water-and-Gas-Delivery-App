@@ -55,7 +55,7 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
             if(!email.isEmpty()) {
                 presenter.sendOtp(email);
             }else {
-                Toast.makeText(this, "Please", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
             }
         });
 
