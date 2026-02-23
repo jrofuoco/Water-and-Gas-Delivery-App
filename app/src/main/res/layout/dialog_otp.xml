@@ -44,7 +44,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/confirm_otp"
+        android:id="@+id/resend_OTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -53,7 +53,7 @@
         android:backgroundTint="@color/primary_orange"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:text="@string/forgot_btn"
+        android:text="@string/resend"
         android:textColor="@color/white"
         app:cornerRadius="24dp" />
 </LinearLayout>
