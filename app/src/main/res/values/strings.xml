@@ -31,4 +31,7 @@
     <string name="forgot_btn">Send</string>
     <string name="otp">Confirm OTP</string>
     <string name="resend">Resend in</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_password_subtitle">Enter your new password below to secure your account.</string>
+    <string name="change_text">Confirm</string>
 </resources>
