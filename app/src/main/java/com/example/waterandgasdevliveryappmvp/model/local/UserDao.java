@@ -9,6 +9,9 @@ public interface UserDao {
     @Insert
     void insert(User user);
 
-    @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
+    @Query("SELECT * FROM users WHERE LOWER(email) = LOWER(:email) LIMIT 1")
     User getUserByEmail(String email);
+
+    @Query("UPDATE users SET password = :newPassword WHERE LOWER(email) = LOWER(:email)")
+    void updatePassword(String email, String newPassword);
 }

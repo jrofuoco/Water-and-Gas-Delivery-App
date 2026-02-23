@@ -126,6 +126,7 @@ public class ForgotPassword extends AppCompatActivity implements OTPPresenter.OT
                     Toast.makeText(ForgotPassword.this, "OTP Verified!", Toast.LENGTH_SHORT).show();
                     otpDialog.dismiss();
                     Intent intent = new Intent(ForgotPassword.this, ChangePassword.class);
+                    intent.putExtra("EMAIL", email_address.getText().toString().trim());
                     startActivity(intent);
                 } else {
                     Toast.makeText(ForgotPassword.this, "Wrong OTP! Please try again.", Toast.LENGTH_SHORT).show();

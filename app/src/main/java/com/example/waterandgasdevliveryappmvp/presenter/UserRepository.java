@@ -30,11 +30,23 @@ public class UserRepository {
         });
     }
 
+    public void updatePassword(String email, String newPassword, Callback callback) {
+        executor.execute(() -> {
+            db.userDao().updatePassword(email, newPassword);
+            callback.onComplete();
+        });
+    }
+
     public interface Callback {
         void onComplete();
     }
 
     public interface UserCallback {
         void onResult(User user);
+    }
+
+    public interface UpdatePasswordCallback {
+        void onPasswordChanged();
+        void onError();
     }
 }
