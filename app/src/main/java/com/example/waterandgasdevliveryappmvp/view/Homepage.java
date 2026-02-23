@@ -1,6 +1,8 @@
 package com.example.waterandgasdevliveryappmvp.view;
-
+import com.example.waterandgasdevliveryappmvp.model.HomePagePresenter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,14 +13,11 @@ import com.example.waterandgasdevliveryappmvp.model.local.Item;
 import com.example.waterandgasdevliveryappmvp.view.adapter.ItemAdapter;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends AppCompatActivity implements HomePageView {
 
     private GridView gridView;
     private ItemAdapter itemAdapter;
-    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +26,38 @@ public class Homepage extends AppCompatActivity {
 
         gridView = findViewById(R.id.gridView_items);
 
-        db = AppDatabase.getInstance(this);
+        AppDatabase db = AppDatabase.getInstance(this);
+        HomePagePresenter presenter = new HomePagePresenter(this, db);
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            List<Item> items = db.itemsDao().getAllItems();
-            runOnUiThread(() -> {
-                itemAdapter = new ItemAdapter(Homepage.this, items);
-                gridView.setAdapter(itemAdapter);
-            });
+        setupBottomNavigation();
+
+        presenter.loadItems(); // 👈 Call presenter
+    }
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                gridView.setVisibility(View.VISIBLE);
+                return true;
+            } else if (itemId == R.id.navigation_cart) {
+                gridView.setVisibility(View.INVISIBLE);
+                return true;
+            } else if (itemId == R.id.navigation_account) {
+                gridView.setVisibility(View.INVISIBLE);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    @Override
+    public void showItems(List<Item> items) {
+        runOnUiThread(() -> {
+            itemAdapter = new ItemAdapter(this, items);
+            gridView.setAdapter(itemAdapter);
         });
     }
 }

@@ -42,7 +42,9 @@ public class Login extends AppCompatActivity implements LoginView{
         //LOGIN BUTTON
         login = findViewById(R.id.login_button);
         login.setOnClickListener(view -> {
-            loginPresenter.login(email.getText().toString(), password.getText().toString());
+//            loginPresenter.login(email.getText().toString(), password.getText().toString());
+            Intent intent = new Intent(Login.this, Homepage.class);
+            startActivity(intent);
         });
 
         //SIGN UP BUTTON
